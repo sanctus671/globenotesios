@@ -84,6 +84,7 @@
         <gap:splash gap:platform="ios" src="resources/ios/splash/Default@2x~ipad~anyany.png" />
         <gap:splash gap:platform="ios" src="resources/ios/splash/Default@2x~ipad~comany.png" />
     </platform>
+    <icon src="resources/icon.png" />
     <gap:splash src="resources/splash.png" />
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
     <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
