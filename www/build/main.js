@@ -576,7 +576,7 @@ var HomePage = (function () {
         if (this.properties.isRecording) {
             this.properties.isRecording = false;
             this.speechRecognition.stopListening();
-            this.properties.currentMatch = this.properties.currentMatch + ".";
+            this.properties.currentMatch = this.properties.currentMatch;
             setTimeout(function () { AudioHandler.unmuteApp(); }, 500);
         }
         else if (!this.properties.premium && this.restrictions.dictationsTotal >= this.restrictions.dictationsLimit) {
