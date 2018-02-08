@@ -562,7 +562,7 @@ var HomePage = (function () {
             }
             var result = matches[0];
             _this._zone.run(function () {
-                _this.properties.currentMatch = _this.properties.currentMatch ? _this.properties.currentMatch + " " + (result.charAt(0).toUpperCase() + result.slice(1)) + "." : result + ".";
+                _this.properties.currentMatch = result.charAt(0).toUpperCase() + result.slice(1);
                 _this.calculateTranslations();
                 _this.scrollBottom();
                 //console.log(this.properties.currentMatch);
@@ -576,6 +576,7 @@ var HomePage = (function () {
         if (this.properties.isRecording) {
             this.properties.isRecording = false;
             this.speechRecognition.stopListening();
+            this.properties.currentMatch = this.properties.currentMatch + ".";
             setTimeout(function () { AudioHandler.unmuteApp(); }, 500);
         }
         else if (!this.properties.premium && this.restrictions.dictationsTotal >= this.restrictions.dictationsLimit) {
