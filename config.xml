@@ -85,22 +85,18 @@
         <gap:splash gap:platform="ios" src="resources/ios/splash/Default@2x~ipad~comany.png" />
     </platform>
     <gap:splash src="resources/splash.png" />
-    
-    
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
     <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
     <gap:plugin spec="https://github.com/brodybits/cordova-sqlite-legacy-build-support" />
-    <gap:plugin spec="https://github.com/sanctus671/SpeechRecognizer" >
-        <param name="MICROPHONE_USAGE_DESCRIPTION" value="We are using the microphone to record dictations." />
-    </gap:plugin>
     <gap:plugin spec="https://github.com/sesubash/cordova-plugin-mute-app" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
     <plugin name="cordova-clipboard" spec="^1.1.1" />
     <plugin name="cordova-plugin-file" spec="^5.0.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />
     <gap:plugin spec="https://github.com/hypery2k/cordova-email-plugin#master" />
-    <plugin name="cordova-plugin-inapppurchase" spec="^1.1.0" />    
+    <plugin name="cordova-plugin-inapppurchase" spec="^1.1.0" />
+    <plugin name="cordova-plugin-speechrecognition" spec="^1.2.0" />
 </widget>
