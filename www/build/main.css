@@ -25678,6 +25678,42 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.help-list ion-list .item {
+  margin-bottom: 0px;
+}
+
+.help-list ion-list .item-block .item-inner {
+  border-bottom: 0px;
+}
+
+.help-list ion-label {
+  overflow: visible;
+  white-space: normal;
+}
+
+.help-list ion-label p {
+  margin-bottom: 10px;
+}
+
+p.help-message {
+  padding: 0px 20px;
+}
+
+.send-button {
+  text-align: center;
+}
+
+.intro-slides {
+  padding: 20px 20px;
+}
+
+.intro-slides .swiper-slide {
+  -webkit-box-align: start;
+  -webkit-align-items: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
 .premium-header {
   text-align: center;
   max-width: 300px;
