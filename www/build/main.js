@@ -43,53 +43,58 @@ var PremiumModal = (function () {
             console.log(err);
         });
     }
-    /*
-    public buyPremium(){
-
-        this.iap
-            .buy('com.globenotes.app.premium')
-            .then((data)=> {
-                this.viewCtrl.dismiss(true);
-            })
-            .catch((err)=> {
-                alert(JSON.stringify(err));
-                console.log(err);
-            });
-    }
-    */
     PremiumModal.prototype.buyPremium = function () {
         var _this = this;
-        if (this.platform.is("ios")) {
-            var alert_1 = this.alertCtrl.create({
+        this.iap
+            .buy('com.globenotes.app.premium')
+            .then(function (data) {
+            _this.viewCtrl.dismiss(true);
+        })
+            .catch(function (err) {
+            alert(JSON.stringify(err));
+            console.log(err);
+        });
+    };
+    /*
+    public buyPremium(){
+        if (this.platform.is("ios")){
+            const alert = this.alertCtrl.create({
                 title: 'Confirm',
                 subTitle: "You are purchasing Globe Notes Premium Subscription . This is a subscription which will renew every month for " + this.product.price + ". \
                         <span class=\'purchase-details\'>Payment will be charged to your credit card through your iTunes account at confirmation of purchase. Subscription renews automatically unless cancelled at least 24 hours prior to the end of the subscription period. There is no increase in price when renewing. Subscriptions can be managed and auto-renewal turned off in Account Settings in iTunes after purchase. Once purchased, refunds will not be provided for any unused portion of the term. Read our full <a id=\'premium-terms-link\'>Terms of Service</a> and our <a id=\'premium-privacy-link\'>Privacy Policy</a></span>",
                 buttons: [{
-                        text: 'Continue',
-                        handler: function (data) {
-                            _this.subscribe();
-                        }
-                    }]
+                    text: 'Continue',
+                    handler: data => {
+                        this.subscribe();
+                    }
+                }]
             });
-            alert_1.present();
-            setTimeout(function () {
-                var links = document.querySelectorAll(".purchase-details a");
-                for (var i = 0; i < links.length; i++) {
-                    var link = links[i];
-                    link.addEventListener("click", function (data) {
-                        if (data && data.target && data.target["innerHTML"] === 'Terms of Service') {
+            alert.present();
+            
+            setTimeout(function(){
+                let links = document.querySelectorAll(".purchase-details a");
+                for (var i = 0; i < links.length; i++){
+                    let link = links[i];
+                    link.addEventListener("click", function(data){
+                        if (data && data.target && data.target["innerHTML"] === 'Terms of Service'){
                             window.open("http://dev.taylorhamling.com/globe-notes-privacy-policy/", '_system');
                         }
-                        else if (data && data.target && data.target["innerHTML"] === 'Privacy Policy') {
+                        else if (data && data.target && data.target["innerHTML"] === 'Privacy Policy'){
                             window.open("http://dev.taylorhamling.com/globe-notes-privacy-policy/", '_system');
                         }
                     });
                 }
-            }, 1000);
+            },1000);
+            
+            
             return;
         }
+        
         this.subscribe();
-    };
+
+    }
+    
+    */
     PremiumModal.prototype.subscribe = function () {
         var _this = this;
         this.iap
@@ -109,12 +114,15 @@ var PremiumModal = (function () {
             }
         });
     };
+    PremiumModal.prototype.openLink = function (link) {
+        window.open(link, '_system');
+    };
     PremiumModal.prototype.dismiss = function () {
         this.viewCtrl.dismiss(false);
     };
     PremiumModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'premium',template:/*ion-inline-start:"D:\Taylor\Documents\Websites\globenotesios\src\modals\premium\premium.html"*/`<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Upgrade To Premium\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios">Cancel</span>\n                <ion-icon name="md-close" showWhen="android, windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n    \n    <div class=\'premium-header\'>    \n        <h1>Upgrade to premium to continue</h1>\n        <p>See below for the full features you get from upgrading</p>\n        <button ion-button block (click)="buyPremium()">Upgrade Now - {{product.price}}</button>\n    </div>    \n    \n    <ion-list class=\'premium-list\'>\n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Unlimited dictations</h2>\n            <p>Don\'t be restricted to just 100 dictations. Dictate as much as you need.</p>\n        </ion-item>\n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Unlimited translations</h2>\n            <p>Have as many additional live translations as you need.</p>\n        </ion-item>   \n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Priority support</h2>\n            <p>Stuck with something? We\'ll help right away.</p>\n        </ion-item>    \n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Priority feature requests</h2>\n            <p>Have an idea for a new feature? We\'ll listen and add it to future releases.</p>\n        </ion-item>              \n    </ion-list>  \n    \n    \n    <div class="restore">\n        <p>Already purchased premium?</p>\n        <button ion-button outline block (click)="restorePremium()">Restore Premium</button>\n    </div>\n    \n    \n</ion-content>`/*ion-inline-end:"D:\Taylor\Documents\Websites\globenotesios\src\modals\premium\premium.html"*/
+            selector: 'premium',template:/*ion-inline-start:"D:\Taylor\Documents\Websites\globenotesios\src\modals\premium\premium.html"*/`<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            Upgrade To Premium\n        </ion-title>\n        <ion-buttons start>\n            <button ion-button (click)="dismiss()">\n                <span ion-text color="primary" showWhen="ios">Cancel</span>\n                <ion-icon name="md-close" showWhen="android, windows"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n    \n    <div class=\'premium-header\'>    \n        <h1>Upgrade to premium to continue</h1>\n        <p>See below for the full features you get from upgrading</p>\n        <button ion-button block (click)="buyPremium()">Upgrade Now - {{product.price}}</button>\n        \n<p class="apple-stuff">By tapping the Upgrade Now button you will be purchasing Globe Notes Premium Subscription . This is a subscription which will renew every month for {{product.price}}.\nPayment will be charged to your credit card through your iTunes account at confirmation of purchase. Subscription renews automatically unless cancelled at least 24 hours prior to the end of the subscription period. There is no increase in price when renewing. Subscriptions can be managed and auto-renewal turned off in Account Settings in iTunes after purchase. Once purchased, refunds will not be provided for any unused portion of the term. Read our full \n<a id=\'premium-terms-link\' (click)="openLink(\'http://dev.taylorhamling.com/globe-notes-privacy-policy/\')">Terms of Service</a> \nand our <a id=\'premium-privacy-link\' (click)="openLink(\'http://dev.taylorhamling.com/globe-notes-privacy-policy/\')">Privacy Policy</a>\n</p>        \n    </div>    \n    \n  \n    \n    <ion-list class=\'premium-list\'>\n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Unlimited dictations</h2>\n            <p>Don\'t be restricted to just 100 dictations. Dictate as much as you need.</p>\n        </ion-item>\n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Unlimited translations</h2>\n            <p>Have as many additional live translations as you need.</p>\n        </ion-item>   \n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Priority support</h2>\n            <p>Stuck with something? We\'ll help right away.</p>\n        </ion-item>    \n        <ion-item>\n            <ion-icon name="checkmark" item-start></ion-icon>\n            <h2>Priority feature requests</h2>\n            <p>Have an idea for a new feature? We\'ll listen and add it to future releases.</p>\n        </ion-item>              \n    </ion-list>  \n    \n      \n    \n    \n    <div class="restore">\n        <p>Already purchased premium?</p>\n        <button ion-button outline block (click)="restorePremium()">Restore Premium</button>\n    </div>\n    \n    \n</ion-content>`/*ion-inline-end:"D:\Taylor\Documents\Websites\globenotesios\src\modals\premium\premium.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_purchase__["a" /* InAppPurchase */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], PremiumModal);

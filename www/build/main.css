@@ -25733,6 +25733,12 @@ p.help-message {
   margin-bottom: 20px;
 }
 
+.apple-stuff {
+  text-align: left;
+  font-size: 10px;
+  margin-top: 20px;
+}
+
 .dictate-card.card {
   position: relative;
   overflow: visible;
